@@ -146,8 +146,9 @@ class QuizzBee extends Component {
     return (
       <Layout className="layout">
         <Header>
+          <img src="/images/logo512.png" style={{ float: "left", height: 40, marginTop:10, marginRight:10, }} />
           <h3 style={{ color: "white" }}>
-            แบบประเมินความเสี่ยงการติดต่อของ Covid-19 2020
+            แบบประเมินความเสี่ยงการติดต่อของ Covid-19 
           </h3>
         </Header>
 
