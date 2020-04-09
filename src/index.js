@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import ReactDOM from "react-dom";
-import "./assets/style.css";
 import "antd/dist/antd.css";
 import quizService from "./quizService";
 import QuestionBox from "./components/QuestionBox";
