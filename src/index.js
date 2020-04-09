@@ -148,7 +148,7 @@ class QuizzBee extends Component {
       <Layout className="layout">
         <Header>
           <h3 style={{ color: "white" }}>
-            แบบประเมินความเสี่ยงการติดต่อของ Covid-19
+            แบบประเมินความเสี่ยงการติดต่อของ Covid-19 2020
           </h3>
         </Header>
 
