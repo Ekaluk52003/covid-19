@@ -150,9 +150,9 @@ class QuizzBee extends Component {
               marginRight: 10,
             }}
           />
-          <h3 style={{ color: "white" }}>
-            ความเสี่ยงการติดต่อของ Covid-19
-          </h3>
+          <h5 style={{ color: "white" }}>
+          แบบประเมินความเสี่ยงการติดต่อของ Covid-19
+          </h5>
         </Header>
 
         <Content style={{ padding: "0 50px" }}>
@@ -264,7 +264,7 @@ class QuizzBee extends Component {
           </div>
         </Content>
         <Footer style={{ textAlign: "center" }}>
-        ความเสี่ยงการติดต่อของ Covid-19 หน่วยงานความปลอดภัยอาชีวอนามัยและสิ่งแวดล้อม
+        แบบประเมินความเสี่ยงการติดต่อของ Covid-19 หน่วยงานความปลอดภัยอาชีวอนามัยและสิ่งแวดล้อม
         </Footer>
       </Layout>
     );
