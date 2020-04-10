@@ -32,6 +32,7 @@ class QuizzBee extends Component {
     this.setState({
       start: true,
     });
+    window.scrollTo(0, 0);
   };
 
   handleSelect = (value) => {
@@ -51,6 +52,13 @@ class QuizzBee extends Component {
       });
     });
   };
+
+  scrollTop = () => {
+    if (this.state.response === 7) {
+      window.scrollTo(0, 0);
+    }
+  };
+
   computeAnswer = (answer, correctAnswer, Id) => {
     if (answer === correctAnswer) {
       this.setState({
@@ -89,6 +97,9 @@ class QuizzBee extends Component {
     this.setState({
       response: this.state.response < 7 ? this.state.response + 1 : 7,
     });
+    if (this.state.response === 7) {
+      window.scrollTo(0, 0);
+    }
   };
 
   confirmData = () => {
@@ -137,6 +148,11 @@ class QuizzBee extends Component {
   componentDidMount() {
     this.getQuestion();
   }
+
+  componentDidUpdate() {
+    this.scrollTop();
+  }
+
   render() {
     return (
       <Layout className="layout">
@@ -151,7 +167,7 @@ class QuizzBee extends Component {
             }}
           />
           <h5 style={{ color: "white" }}>
-          แบบประเมินความเสี่ยงการติดต่อของ Covid-19
+            แบบประเมินความเสี่ยงการติดต่อของ Covid-19
           </h5>
         </Header>
 
@@ -176,7 +192,7 @@ class QuizzBee extends Component {
                   />
                 </div>
                 <p>
-                หน่วยงานความปลอดภัยอาชีวอนามัยและสิ่งแวดล้อม
+                  หน่วยงานความปลอดภัยอาชีวอนามัยและสิ่งแวดล้อม
                   ขอความร่วมมือพนักงานและผู้เกี่ยวข้องดำเนินการประเมิณความเสี่ยงโรคติด
                   Covid-19
                 </p>
@@ -193,10 +209,11 @@ class QuizzBee extends Component {
                 <h3>เลือกหน่วยงานของท่าน</h3>
                 <Select
                   labelInValue
-                  defaultValue={{ key: "PEM101" }}
+                  defaultValue={{ key: "null" }}
                   style={{ width: "100%" }}
                   onChange={this.handleSelect}
                 >
+                  <Option value="null">------</Option>
                   <Option value="PEM000(Chairman/MD)">
                     PEM000(Chairman/MD)
                   </Option>
@@ -264,7 +281,8 @@ class QuizzBee extends Component {
           </div>
         </Content>
         <Footer style={{ textAlign: "center" }}>
-        แบบประเมินความเสี่ยงการติดต่อของ Covid-19 หน่วยงานความปลอดภัยอาชีวอนามัยและสิ่งแวดล้อม
+          แบบประเมินความเสี่ยงการติดต่อของ Covid-19
+          หน่วยงานความปลอดภัยอาชีวอนามัยและสิ่งแวดล้อม
         </Footer>
       </Layout>
     );

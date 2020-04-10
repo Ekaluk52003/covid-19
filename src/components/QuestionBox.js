@@ -17,20 +17,20 @@ const QuestionBox = ({ question, options, selected, Id }) => {
     <div className="site-card-border-less-wrapper">
       <Card>
         <h3>{question}</h3>
-      {answer.map((text, index) => (
-        <Button 
-           type="primary"
-          key={index}
-          className="answerBtn"
-          style={{ marginRight : 40, marginTop: 20 }}
-          onClick={() => {
-            setAnswer([text]);
-            selected(text,{Id});
-          }}
-        >
-          {text}
-        </Button>
-      ))}
+        {answer.map((text, index) => (
+          <Button
+            type="primary"
+            key={index}
+            className="answerBtn"
+            style={{ marginRight: 40, marginTop: 20 }}
+            onClick={() => {
+              setAnswer([text]);
+              selected(text, { Id });
+            }}
+          >
+            {text}
+          </Button>
+        ))}
       </Card>
     </div>
   );
