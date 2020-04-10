@@ -4,7 +4,7 @@ import "antd/dist/antd.css";
 import quizService from "./quizService";
 import QuestionBox from "./components/QuestionBox";
 import Analysis from "./components/Analysis";
-import { Button, Layout, Menu, Input, Switch, PageHeader } from "antd";
+import { Button, Layout, Menu, Input, Select, PageHeader } from "antd";
 import {
   FundOutlined,
   CloseOutlined,
@@ -13,6 +13,7 @@ import {
 } from "@ant-design/icons";
 import mySvg from "./covid.svg";
 
+const { Option } = Select;
 const { Header, Content, Footer } = Layout;
 
 class QuizzBee extends Component {
@@ -23,8 +24,6 @@ class QuizzBee extends Component {
     username: null,
     start: false,
     thankYou: false,
-    staff: true,
-    PreciseCompanyName: null,
     CompanyName: null,
     meaning: null,
   };
@@ -35,16 +34,14 @@ class QuizzBee extends Component {
     });
   };
 
+  handleSelect = (value) => {
+    this.setState({
+      CompanyName: value.label,
+    });
+  };
+
   handleChange = (e) => {
     this.setState({ [e.target.name]: e.target.value });
-  };
-  //toggle switch button by changing true or false
-  changeStaff = () => {
-    this.setState((prevState) => ({
-      staff: !prevState.staff,
-      PreciseCompanyName: null,
-      CompanyName: null,
-    }));
   };
 
   getQuestion = () => {
@@ -66,7 +63,7 @@ class QuizzBee extends Component {
         meaning: "ระดับความเสี่ยงน้อยมาก",
       });
     }
-    if (this.state.score > 7 && this.state.score < 12 ) {
+    if (this.state.score > 7 && this.state.score < 12) {
       this.setState({
         meaning: "ระดับที่มีความเสี่ยง",
       });
@@ -76,7 +73,7 @@ class QuizzBee extends Component {
         meaning: "ระดับความเสี่ยงมาก",
       });
     }
-    if (this.state.score > 19 ) {
+    if (this.state.score > 19) {
       this.setState({
         meaning: "ระดับความเสี่ยงมากที่สุด",
       });
@@ -99,8 +96,6 @@ class QuizzBee extends Component {
       {
         username: this.state.username,
         score: this.state.score,
-        staff: this.state.staff,
-        PreciseCompanyName: this.state.PreciseCompanyName,
         CompanyName: this.state.CompanyName,
         meaning: this.state.meaning,
 
@@ -146,9 +141,17 @@ class QuizzBee extends Component {
     return (
       <Layout className="layout">
         <Header>
-          <img src="/images/logo512.png" style={{ float: "left", height: 40, marginTop:10, marginRight:10, }} />
+          <img
+            src="/images/logo512.png"
+            style={{
+              float: "left",
+              height: 40,
+              marginTop: 10,
+              marginRight: 10,
+            }}
+          />
           <h3 style={{ color: "white" }}>
-            แบบประเมินความเสี่ยงการติดต่อของ Covid-19 
+            ความเสี่ยงการติดต่อของ Covid-19
           </h3>
         </Header>
 
@@ -159,8 +162,8 @@ class QuizzBee extends Component {
             {this.state.start === false ? (
               <div>
                 <h2>
-                  <FundOutlined /> แบบประเมินความเสี่ยงการติดต่อของ Covid-19
-                  โดยฝ่าย Safety
+                  <FundOutlined /> แบบประเมินความเสี่ยงการติดต่อโรค Covid-19
+                  โดยหน่วยงานความปลอดภัยอาชีวอนามัยและสิ่งแวดล้อม
                 </h2>
                 <div className="header">
                   <img
@@ -173,8 +176,8 @@ class QuizzBee extends Component {
                   />
                 </div>
                 <p>
-                  ทางหน่วยงานด้านความปลอดภัย บริษัท พรีไซค์
-                  ขอความร่วมมือพนักงานและผู้เกี่ยวข้องดำเนินการประเมิณความเสี่ยงการติดต่อของ
+                หน่วยงานความปลอดภัยอาชีวอนามัยและสิ่งแวดล้อม
+                  ขอความร่วมมือพนักงานและผู้เกี่ยวข้องดำเนินการประเมิณความเสี่ยงโรคติด
                   Covid-19
                 </p>
                 <h3>ชื่อ-สกุล</h3>
@@ -187,38 +190,43 @@ class QuizzBee extends Component {
                 ></Input>
                 <br />
                 <br />
-                <Switch
-                  checkedChildren={<CheckOutlined />}
-                  unCheckedChildren={<CloseOutlined />}
-                  defaultChecked
-                  onChange={this.changeStaff}
-                />
-
-                {this.state.staff === true
-                  ? " ท่านเป็นพนักงาน บริษัท พรีไซค์"
-                  : " ท่านไม่ได้เป็นพนักงาน บริษัท พรีไซค์"}
-                <br />
-                <br />
-
-                {this.state.staff === true && (
-                  <Input
-                    type="text"
-                    name="PreciseCompanyName"
-                    placeholder="หน่วยงาน (ระบุหน่วยงานให้ชัดเจน เช่น PEM101)*"
-                    value={this.state.PreciseCompanyName}
-                    onChange={this.handleChange}
-                  ></Input>
-                )}
-
-                {this.state.staff === false && (
-                  <Input
-                    type="text"
-                    name="CompanyName"
-                    placeholder="กรอกชื่อบริษัทที่ท่านทำงาน"
-                    value={this.state.CompanyName}
-                    onChange={this.handleChange}
-                  ></Input>
-                )}
+                <h3>เลือกหน่วยงานของท่าน</h3>
+                <Select
+                  labelInValue
+                  defaultValue={{ key: "PEM101" }}
+                  style={{ width: "100%" }}
+                  onChange={this.handleSelect}
+                >
+                  <Option value="PEM000(Chairman/MD)">
+                    PEM000(Chairman/MD)
+                  </Option>
+                  <Option value="PEM101">PEM101</Option>
+                  <Option value="PEM102">PEM102</Option>
+                  <Option value="PEM103">PEM103</Option>
+                  <Option value="PEM104">PEM104</Option>
+                  <Option value="PEM105">PEM105</Option>
+                  <Option value="PEM200">PEM200</Option>
+                  <Option value="PEM400">PEM400</Option>
+                  <Option value="PEM500">PEM500</Option>
+                  <Option value="PEM600">PEM600</Option>
+                  <Option value="PEM800">PEM800</Option>
+                  <Option value="PEM702">PEM702</Option>
+                  <Option value="PEM703">PEM703</Option>
+                  <Option value="PEM901">PEM901</Option>
+                  <Option value="PEM902">PEM902</Option>
+                  <Option value="PEM904">PEM904</Option>
+                  <Option value="PMW000">PMW000(MD)</Option>
+                  <Option value="PMW101">PMW101</Option>
+                  <Option value="PMW102">PMW102</Option>
+                  <Option value="PMW103">PMW103</Option>
+                  <Option value="PMW104">PMW104</Option>
+                  <Option value="PMW800">PMW800</Option>
+                  <Option value="PMW500">PMW500</Option>
+                  <Option value="PMW600">PMW600</Option>
+                  <Option value="PMW703">PMW703</Option>
+                  <Option value="CI101">CI101</Option>
+                  <Option value="บุคคลภายนอก">บุคคลภายนอก</Option>
+                </Select>
 
                 <br />
                 <br />
@@ -256,7 +264,7 @@ class QuizzBee extends Component {
           </div>
         </Content>
         <Footer style={{ textAlign: "center" }}>
-          แบบประเมินความเสี่ยงการติดต่อของ Covid-19 โดยฝ่าย Safety
+        ความเสี่ยงการติดต่อของ Covid-19 หน่วยงานความปลอดภัยอาชีวอนามัยและสิ่งแวดล้อม
         </Footer>
       </Layout>
     );

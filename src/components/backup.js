@@ -1,24 +1,27 @@
-const QuestionBox = ({question, options, selected, Id}) => {
-    console.log('options');
-    const [answer, setAnswer ] = useState(options);
-    return (
-  
-      
-      <div className="questionBox">
-      <div className="question">{question}</div>
-      {answer.map((text, index) => (
-        <Button 
-           type="primary"
-          key={index}
-          className="answerBtn"
-          onClick={() => {
-            setAnswer([text]);
-            selected(text,{Id});
-          }}
-        >
-          {text}
-        </Button>
-      ))}
-    </div>
-    );  
-  };
+<Option value="PEM000(Chairman/MD)">PEM000"(Chairman/MD)"</Option>
+<Option value="PEM101">PEM101</Option>
+<Option value="PEM102">PEM102</Option>
+<Option value="PEM103">PEM103</Option>
+<Option value="PEM104">PEM104</Option>
+<Option value="PEM105">PEM105</Option>
+<Option value="PEM200">PEM200</Option>
+<Option value="PEM400">PEM400</Option>
+<Option value="PEM500">PEM500</Option>
+<Option value="PEM600">PEM600</Option>
+<Option value="PEM800">PEM800</Option>
+<Option value="PEM702">PEM702</Option>
+<Option value="PEM703">PEM703</Option>
+<Option value="PEM901">PEM901</Option>
+<Option value="PEM902">PEM902</Option>
+<Option value="PEM904">PEM904</Option>
+<Option value="PMW000">PMW000"(MD)"</Option>
+<Option value="PMW101">PMW101</Option>
+<Option value="PMW102">PMW102</Option>
+<Option value="PMW103">PMW103</Option>
+<Option value="PMW104">PMW104</Option>
+<Option value="PMW800">PMW800</Option>
+<Option value="PMW500">PMW500</Option>
+<Option value="PMW600">PMW600</Option>
+<Option value="PMW703">PMW703</Option>
+<Option value="CI101">CI101</Option>
+<Option value="บุคคลภายนอก">บุคคลภายนอก</Option>
