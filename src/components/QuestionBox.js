@@ -13,12 +13,14 @@ import {
 const QuestionBox = ({ question, options, selected, Id }) => {
   console.log("options");
   const [answer, setAnswer] = useState(options);
+  const [double, setDouble] = useState(false);
   return (
     <div className="site-card-border-less-wrapper">
       <Card>
         <h3>{question}</h3>
         {answer.map((text, index) => (
           <Button
+          disabled={double}
             type="primary"
             key={index}
             className="answerBtn"
@@ -26,13 +28,17 @@ const QuestionBox = ({ question, options, selected, Id }) => {
             onClick={() => {
               setAnswer([text]);
               selected(text, { Id });
+              setDouble(true);
             }}
           >
             {text}
-          </Button>
+          </Button>        
+           
+
         ))}
       </Card>
     </div>
+  
   );
 };
 

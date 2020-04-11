@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import ReactDOM from "react-dom";
 import "antd/dist/antd.css";
+import style from "./style.css"
 import quizService from "./quizService";
 import QuestionBox from "./components/QuestionBox";
 import Analysis from "./components/Analysis";
@@ -26,6 +27,10 @@ class QuizzBee extends Component {
     thankYou: false,
     CompanyName: null,
     meaning: null,
+    hideBox :false,
+    showBtn : true,
+    result : false,
+    
   };
 
   getStart = () => {
@@ -34,6 +39,22 @@ class QuizzBee extends Component {
     });
     window.scrollTo(0, 0);
   };
+
+  showResult = () => {
+    this.setState({  result : true });
+    this.setState({ showBtn : false });
+    this.setState({ hideBox : true });
+  };
+
+  reset = () => {
+    this.getQuestion();
+    this.setState({
+    // start: true,
+    hideBox :false,
+     score :0,
+    response:0
+  });
+}
 
   handleSelect = (value) => {
     this.setState({
@@ -253,8 +274,7 @@ class QuizzBee extends Component {
               </div>
             ) : null}
 
-            {this.state.start &&
-              this.state.response < 7 &&
+            {this.state.start && this.state.response < 7 &&
               this.state.questionBank.map(
                 ({ question, answers, correct, Id }) => (
                   <QuestionBox
@@ -268,9 +288,15 @@ class QuizzBee extends Component {
                 )
               )}
 
-            {/* {this.state.questionBank.map( (item) => <li>{item.Id}</li>)} */}
+            {this.state.start && this.state.showBtn && this.state.response === 7 && ( <Button type="primary" block onClick={this.showResult}>
+                  Check Result
+                </Button>) }
 
-            {this.state.response === 7 && (
+                {this.state.start && this.state.showBtn && this.state.response === 7 && ( <Button type="primary" block onClick={this.reset}>
+                  Reset
+                </Button>) }
+
+            {this.state.result && (
               <Analysis
                 score={this.state.score}
                 confirmData={this.confirmData}
