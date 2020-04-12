@@ -70,12 +70,7 @@ class Graph extends React.Component {
           HighestRisk: filterHighestRisk,
 
           chartData: {
-            labels: [
-              "เสี่ยงน้อยมาก",
-              "เสี่ยงน้อย",
-              "เสี่ยง",
-              "เสี่ยงมาก",
-            ],
+            labels: ["เสี่ยงน้อยมาก", "เสี่ยงน้อย", "เสี่ยง", "เสี่ยงมาก"],
             datasets: [
               {
                 label: "ระดับความเสี่ยง",
@@ -85,7 +80,6 @@ class Graph extends React.Component {
                 borderWidth: 5,
               },
             ],
-           
           },
         });
       },
@@ -109,7 +103,9 @@ class Graph extends React.Component {
           }}
         >
           <h2 style={{ textAlign: "center" }}>ภาพรวมการประเมินผล</h2>
-          <Doughnut data={this.state.chartData} />
+          <Doughnut
+            data={this.state.chartData}
+          />
 
           <Row gutter={16} style={{ marginBottom: 20 }}>
             <Col span={12}>
