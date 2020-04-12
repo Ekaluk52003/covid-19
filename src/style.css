@@ -1,6 +1,24 @@
 button:disabled,
 button[disabled]{
-  border: 1px solid #999999;
-  background-color: #7ce009 !important;
-  color: #666666;
+  border: 1px solid #1890ff !important;
+  background-color: #1890ff !important;
+  color:#fff !important;
 }
+
+
+.ant-progress-text {
+ 
+  color: rgb(51, 51, 51)!important;
+
+  font-size: 1.35rem!important;
+}
+
+.ant-progress-steps-item {
+
+  min-width: 30px!important;
+  height: 1rem!important;
+  background: #473b3b!important;
+
+  
+}
+

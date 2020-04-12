@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import Fade from 'react-reveal/Fade';
 import {
   Button,
   Layout,
@@ -15,13 +16,14 @@ const QuestionBox = ({ question, options, selected, Id }) => {
   const [answer, setAnswer] = useState(options);
   const [double, setDouble] = useState(false);
   return (
+    <Fade right cascadetop cascade duration={1000}>
     <div className="site-card-border-less-wrapper">
       <Card>
         <h3>{question}</h3>
         {answer.map((text, index) => (
           <Button
           disabled={double}
-            type="primary"
+            type="primary" ghost
             key={index}
             className="answerBtn"
             style={{ marginRight: 40, marginTop: 20 }}
@@ -38,6 +40,7 @@ const QuestionBox = ({ question, options, selected, Id }) => {
         ))}
       </Card>
     </div>
+    </Fade>
   
   );
 };

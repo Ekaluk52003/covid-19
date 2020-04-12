@@ -1,7 +1,8 @@
 import React, { Component } from "react";
 import ReactDOM from "react-dom";
+import Fade from "react-reveal/Fade";
 import "antd/dist/antd.css";
-import style from "./style.css"
+import style from "./style.css";
 import quizService from "./quizService";
 import QuestionBox from "./components/QuestionBox";
 import Analysis from "./components/Analysis";
@@ -27,10 +28,9 @@ class QuizzBee extends Component {
     thankYou: false,
     CompanyName: null,
     meaning: null,
-    hideBox :false,
-    showBtn : true,
-    result : false,
-    
+    hideBox: false,
+    showBtn: true,
+    result: false,
   };
 
   getStart = () => {
@@ -41,20 +41,20 @@ class QuizzBee extends Component {
   };
 
   showResult = () => {
-    this.setState({  result : true });
-    this.setState({ showBtn : false });
-    this.setState({ hideBox : true });
+    this.setState({ result: true });
+    this.setState({ showBtn: false });
+    this.setState({ hideBox: true });
   };
 
   reset = () => {
     this.getQuestion();
     this.setState({
-    // start: true,
-    hideBox :false,
-     score :0,
-    response:0
-  });
-}
+      // start: true,
+      hideBox: false,
+      score: 0,
+      response: 0,
+    });
+  };
 
   handleSelect = (value) => {
     this.setState({
@@ -187,129 +187,185 @@ class QuizzBee extends Component {
               marginRight: 10,
             }}
           />
-          <h5 style={{ color: "white" }}>
-            แบบประเมินความเสี่ยงการติดต่อของ Covid-19
-          </h5>
+          <h3 style={{ color: "white" }}>PRECISE</h3>
         </Header>
 
-        <Content style={{ padding: "0 50px" }}>
-          <div className="site-layout-content">
-            <br />
+        <Fade right cascadetop cascade duration={1000}>
+          <Content style={{ padding: "0 50px" }}>
+            <div className="site-layout-content">
+              <br />
 
-            {this.state.start === false ? (
-              <div>
-                <h2>
-                  <FundOutlined /> แบบประเมินความเสี่ยงการติดต่อโรค Covid-19
-                  โดยหน่วยงานความปลอดภัยอาชีวอนามัยและสิ่งแวดล้อม
-                </h2>
-                <div className="header">
-                  <img
-                    src={mySvg}
-                    style={{
-                      height: "300px",
-                      display: "block",
-                      margin: "auto",
-                    }}
-                  />
+              {this.state.start === false ? (
+                <div>
+                  <h2>
+                    แบบประเมินความเสี่ยงการติดต่อโรค Covid-19
+                    โดยหน่วยงานความปลอดภัยอาชีวอนามัยและสิ่งแวดล้อม
+                  </h2>
+
+                  <div className="header">
+                    <img
+                      src={mySvg}
+                      style={{
+                        height: "300px",
+                        display: "block",
+                        margin: "auto",
+                      }}
+                    />
+                  </div>
+
+                  <p>
+                    หน่วยงานความปลอดภัยอาชีวอนามัยและสิ่งแวดล้อม
+                    ขอความร่วมมือพนักงานและผู้เกี่ยวข้องดำเนินการประเมิณความเสี่ยงโรคติดต่อ
+                    Covid-19
+                  </p>
+                  <h3>ชื่อ-สกุล</h3>
+                  <Input
+                    type="text"
+                    placeholder="กรอก ชื่อ-สกุล"
+                    name="username"
+                    value={this.state.username}
+                    onChange={this.handleChange}
+                  ></Input>
+                  <br />
+                  <br />
+                  <h3>เลือกหน่วยงานของท่าน</h3>
+                  <Select
+                    labelInValue
+                    defaultValue={{ key: "null" }}
+                    style={{ width: "100%" }}
+                    onChange={this.handleSelect}
+                  >
+                    <Option value="null">------</Option>
+                    <Option value="PEM000(Chairman/MD)">
+                      PEM000(Chairman/MD)
+                    </Option>
+                    <Option value="PEM101">PEM101</Option>
+                    <Option value="PEM102">PEM102</Option>
+                    <Option value="PEM103">PEM103</Option>
+                    <Option value="PEM104">PEM104</Option>
+                    <Option value="PEM105">PEM105</Option>
+                    <Option value="PEM200">PEM200</Option>
+                    <Option value="PEM400">PEM400</Option>
+                    <Option value="PEM500">PEM500</Option>
+                    <Option value="PEM600">PEM600</Option>
+                    <Option value="PEM800">PEM800</Option>
+                    <Option value="PEM702">PEM702</Option>
+                    <Option value="PEM703">PEM703</Option>
+                    <Option value="PEM901">PEM901</Option>
+                    <Option value="PEM902">PEM902</Option>
+                    <Option value="PEM904">PEM904</Option>
+                    <Option value="PMW000">PMW000(MD)</Option>
+                    <Option value="PMW101">PMW101</Option>
+                    <Option value="PMW102">PMW102</Option>
+                    <Option value="PMW103">PMW103</Option>
+                    <Option value="PMW104">PMW104</Option>
+                    <Option value="PMW800">PMW800</Option>
+                    <Option value="PMW500">PMW500</Option>
+                    <Option value="PMW600">PMW600</Option>
+                    <Option value="PMW703">PMW703</Option>
+                    <Option value="CI101">CI101</Option>
+                    <Option value="บุคคลภายนอก">บุคคลภายนอก</Option>
+                  </Select>
+
+                  <br />
+                  <br />
+                  {this.state.username !== null &&
+                    this.state.CompanyName !== null && (
+                      <Button type="primary" block onClick={this.getStart}>
+                        เริ่มทำแบบทดสอบ
+                      </Button>
+                    )}
                 </div>
-                <p>
-                  หน่วยงานความปลอดภัยอาชีวอนามัยและสิ่งแวดล้อม
-                  ขอความร่วมมือพนักงานและผู้เกี่ยวข้องดำเนินการประเมิณความเสี่ยงโรคติด
-                  Covid-19
-                </p>
-                <h3>ชื่อ-สกุล</h3>
-                <Input
-                  type="text"
-                  placeholder="กรอก ชื่อ-สกุล"
-                  name="username"
-                  value={this.state.username}
-                  onChange={this.handleChange}
-                ></Input>
-                <br />
-                <br />
-                <h3>เลือกหน่วยงานของท่าน</h3>
-                <Select
-                  labelInValue
-                  defaultValue={{ key: "null" }}
-                  style={{ width: "100%" }}
-                  onChange={this.handleSelect}
-                >
-                  <Option value="null">------</Option>
-                  <Option value="PEM000(Chairman/MD)">
-                    PEM000(Chairman/MD)
-                  </Option>
-                  <Option value="PEM101">PEM101</Option>
-                  <Option value="PEM102">PEM102</Option>
-                  <Option value="PEM103">PEM103</Option>
-                  <Option value="PEM104">PEM104</Option>
-                  <Option value="PEM105">PEM105</Option>
-                  <Option value="PEM200">PEM200</Option>
-                  <Option value="PEM400">PEM400</Option>
-                  <Option value="PEM500">PEM500</Option>
-                  <Option value="PEM600">PEM600</Option>
-                  <Option value="PEM800">PEM800</Option>
-                  <Option value="PEM702">PEM702</Option>
-                  <Option value="PEM703">PEM703</Option>
-                  <Option value="PEM901">PEM901</Option>
-                  <Option value="PEM902">PEM902</Option>
-                  <Option value="PEM904">PEM904</Option>
-                  <Option value="PMW000">PMW000(MD)</Option>
-                  <Option value="PMW101">PMW101</Option>
-                  <Option value="PMW102">PMW102</Option>
-                  <Option value="PMW103">PMW103</Option>
-                  <Option value="PMW104">PMW104</Option>
-                  <Option value="PMW800">PMW800</Option>
-                  <Option value="PMW500">PMW500</Option>
-                  <Option value="PMW600">PMW600</Option>
-                  <Option value="PMW703">PMW703</Option>
-                  <Option value="CI101">CI101</Option>
-                  <Option value="บุคคลภายนอก">บุคคลภายนอก</Option>
-                </Select>
+              ) : null}
 
-                <br />
-                <br />
-                <Button type="primary" block onClick={this.getStart}>
-                  เริ่มทำแบบทดสอบ
-                </Button>
-              </div>
-            ) : null}
+              {this.state.start &&
+                this.state.response < 7 &&
+                this.state.questionBank.map(
+                  ({ question, answers, correct, Id }) => (
+                    <QuestionBox
+                      question={question}
+                      options={answers}
+                      Id={Id}
+                      selected={(answer) =>
+                        this.computeAnswer(answer, correct, Id)
+                      }
+                    />
+                  )
+                )}
 
-            {this.state.start && this.state.response < 7 &&
-              this.state.questionBank.map(
-                ({ question, answers, correct, Id }) => (
-                  <QuestionBox
-                    question={question}
-                    options={answers}
-                    Id={Id}
-                    selected={(answer) =>
-                      this.computeAnswer(answer, correct, Id)
-                    }
-                  />
-                )
+              {this.state.start &&
+                this.state.showBtn &&
+                this.state.response === 7 && (
+                  <Fade right cascadetop cascade duration={1000}>
+                    <img
+                      src="/images/doctor.svg"
+                      style={{
+                        height: 300,
+                        marginTop: 10,
+                        marginBottom: 10,
+                        height: "300px",
+                        display: "block",
+                        margin: "auto",
+                      }}
+                    />
+                    <h3
+                      style={{
+                        marginTop: 10,
+                        marginBottom: 10,
+                        textAlign: "center",
+                      }}
+                    >
+                      ท่านได้ทำแบบประเมิณเป็นที่เรียบร้อยแล้ว กดปุ่มยืนยัน
+                      เพื่อดูผลประเมิณ
+                    </h3>
+                  </Fade>
+                )}
+
+              {this.state.start &&
+                this.state.showBtn &&
+                this.state.response === 7 && (
+                  <Fade right cascadetop cascade duration={1000}>
+                    <Button
+                      type="primary"
+                      block
+                      onClick={this.showResult}
+                      style={{
+                        marginTop: 10,
+                        marginBottom: 10,
+                      }}
+                    >
+                      ยืนยัน
+                    </Button>
+                    <p></p>
+                  </Fade>
+                )}
+
+              {this.state.start &&
+                this.state.showBtn &&
+                this.state.response === 7 && (
+                  <Fade right cascadetop cascade duration={1000}>
+                    <Button type="primary" block onClick={this.reset}>
+                      ย้อนกลับไปแก้ไข
+                    </Button>
+                  </Fade>
+                )}
+
+              {this.state.result && (
+                <Analysis
+                  score={this.state.score}
+                  confirmData={this.confirmData}
+                  thanks={this.state.thankYou}
+                  name={this.state.username}
+                />
               )}
+            </div>
+          </Content>
 
-            {this.state.start && this.state.showBtn && this.state.response === 7 && ( <Button type="primary" block onClick={this.showResult}>
-                  Check Result
-                </Button>) }
-
-                {this.state.start && this.state.showBtn && this.state.response === 7 && ( <Button type="primary" block onClick={this.reset}>
-                  Reset
-                </Button>) }
-
-            {this.state.result && (
-              <Analysis
-                score={this.state.score}
-                confirmData={this.confirmData}
-                thanks={this.state.thankYou}
-                name={this.state.username}
-              />
-            )}
-          </div>
-        </Content>
-        <Footer style={{ textAlign: "center" }}>
-          แบบประเมินความเสี่ยงการติดต่อของ Covid-19
-          หน่วยงานความปลอดภัยอาชีวอนามัยและสิ่งแวดล้อม
-        </Footer>
+          <Footer style={{ textAlign: "center" }}>
+            แบบประเมินความเสี่ยงการติดต่อของ Covid-19
+            หน่วยงานความปลอดภัยอาชีวอนามัยและสิ่งแวดล้อม
+          </Footer>
+        </Fade>
       </Layout>
     );
   }
