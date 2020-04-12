@@ -24,3 +24,9 @@ button[disabled]{
   body {
    font-family: 'Prompt', sans-serif;
   }
+
+
+  .ant-result-extra {
+   
+    text-align: left!important;
+}

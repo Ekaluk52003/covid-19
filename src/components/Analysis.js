@@ -12,14 +12,14 @@ const openNotification = () => {
 };
 
 const Analysis = ({ score, confirmData, thanks, name }) => (
-  <div style={{ textAlign: "center"}}>
+  <div>
     {score < 8 ? (
       <Fade right cascadetop cascade duration={1000}>
         <Result
           status="success"
-          title="ระดับความเสี่ยงน้อยมาก"
+          title="ระดับความเสี่ยง: เสี่ยงน้อยมาก"
           extra={[
-            <h1>คุณ {name} มีค่าความเสี่ยง Covid น้อยมาก</h1>,
+            <h1>คุณ {name} มีระดับความเสี่ยงต่อการรับเชื้อในระดับความเสี่ยงน้อยมาก</h1>,
 
             <h3>แนะนำให้ปฎิบัติดังนี้</h3>,
             <h3>1.ปฏิบัติงานตามปกติ </h3>,
@@ -40,10 +40,10 @@ const Analysis = ({ score, confirmData, thanks, name }) => (
     {score > 7 && score < 12 ? (
       <Fade right cascadetop cascade duration={1000}>
         <Result
-          title="ระดับที่มีความเสี่ยงน้อย"
+          title="ระดับความเสี่ยง: เสี่ยงน้อย"
           extra={[
             <h1>
-              คุณ {name} มีค่าความเสี่ยง Covid ในระดับที่มีความเสี่ยงน้อย
+              คุณ {name} มีระดับความเสี่ยงต่อการรับเชื้อในระดับความเสี่ยงน้อย
             </h1>,
             <h3>แนะนำให้ปฎิบัติดังนี้</h3>,
             <h3>1.ในผู้ที่ไม่มีอาการสามารถปฏิบัติงานตามปกติ</h3>,
@@ -66,9 +66,9 @@ const Analysis = ({ score, confirmData, thanks, name }) => (
       <Fade right cascadetop cascade duration={1000}>
         <Result
           status="warning"
-          title="ระดับที่มีความเสี่ยง"
+          title="ระดับความเสี่ยง: เสี่ยง"
           extra={[
-            <h1>คุณ {name} มีค่าความเสี่ยง Covid ในระดับที่มีความเสี่ยง</h1>,
+            <h1>คุณ {name} มีระดับความเสี่ยงต่อการรับเชื้อในระดับเสี่ยง</h1>,
             <h3>แนะนำให้ปฎิบัติดังนี้</h3>,
             <h3>1.กักกันตัวเองไว้ที่บ้าน 14 วัน และไม่ใช้ของร่วมกับผู้อื่น</h3>,
             <h3>2.สวมหน้ากากอนามัย และล้างมือด้วยสบู่หรือใช้เจลแอลกอฮอล์</h3>,
@@ -90,9 +90,9 @@ const Analysis = ({ score, confirmData, thanks, name }) => (
       <Fade right cascadetop cascade duration={1000}>
         <Result
           status="error"
-          title="ระดับความเสี่ยงมาก"
+          title="ระดับความเสี่ยง: เสี่ยงมาก"
           extra={[
-            <h1>คุณ {name} มีค่าความเสี่ยง Covid ระดับความเสี่ยงมาก</h1>,
+            <h1>คุณ {name} มีระดับความเสี่ยงต่อการรับเชื้อในระดับความเสี่ยงมาก</h1>,
             <h3>แนะนำให้ปฎิบัติดังนี้</h3>,
             <h3>1.หลีกเลี่ยงการใกล้ชิดกับผู้อื่น</h3>,
             <h3>
