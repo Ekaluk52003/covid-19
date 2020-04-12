@@ -19,6 +19,8 @@ button[disabled]{
   height: 1rem!important;
   background: #473b3b!important;
 
-  
-}
+  }
 
+  body {
+   font-family: 'Prompt', sans-serif;
+  }
