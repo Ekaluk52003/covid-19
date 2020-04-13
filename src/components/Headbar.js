@@ -15,9 +15,8 @@ export class Headbar extends Component {
             src="/images/logo512.png"
             style={{
               float: "left",
-              height: 40,
-              marginTop: 10,
-              marginRight: 10,
+              height: 25,
+              marginTop: 20,
             }}
           />
 
@@ -28,13 +27,14 @@ export class Headbar extends Component {
             <Menu.Item key="2">
               <Link to="/Graph">
                 <AreaChartOutlined
-                  style={{
-                    fontSize: 25,
-                  }}
+                  
                 />
                 Graph
               </Link>
             </Menu.Item>
+            
+            
+           
           </Menu>
         </Header>
       </div>

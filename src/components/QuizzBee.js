@@ -9,10 +9,7 @@ import Headbar from "./Headbar";
 import Foot from "./Foot";
 import { Button, Layout, Menu, Input, Select, PageHeader } from "antd";
 import {
-  FundOutlined,
-  CloseOutlined,
-  CheckOutlined,
-  BgColorsOutlined,
+  LinkOutlined
 } from "@ant-design/icons";
 
 const { Option } = Select;
@@ -191,13 +188,13 @@ class QuizzBee extends Component {
                   </h2>
 
                   <div className="header">
-                  <img
+                    <img
                       src="/images/covid.svg"
                       style={{
                         width: 250,
-                        display:"block",
-                        marginLeft:"auto",
-                        marginRight:"auto",
+                        display: "block",
+                        marginLeft: "auto",
+                        marginRight: "auto",
                       }}
                     />
                   </div>
@@ -269,6 +266,19 @@ class QuizzBee extends Component {
 
               {this.state.start &&
                 this.state.response < 7 &&
+                (<a target="_blank" href="https://ddc.moph.go.th/viralpneumonia/index.php"
+                  style={{
+                    position: "absolute",
+                    top: 20,
+                    right: 35,
+                    color:"#fff"
+                  }}
+                  ><LinkOutlined />ลิงค์ประเทศกลุ่มเสี่ยง</a>
+                  )
+                }
+
+              {this.state.start &&
+                this.state.response < 7 &&
                 this.state.questionBank.map(
                   ({ question, answers, correct, Id }) => (
                     <QuestionBox
@@ -288,11 +298,11 @@ class QuizzBee extends Component {
                   <Fade right cascadetop cascade duration={1000}>
                     <img
                       src="/images/doctor.svg"
-                       style={{
-                          width: 250,
-                          display:"block",
-                          marginLeft:"auto",
-                          marginRight:"auto",                      
+                      style={{
+                        width: 250,
+                        display: "block",
+                        marginLeft: "auto",
+                        marginRight: "auto",
                       }}
                     />
                     <h3
@@ -346,8 +356,8 @@ class QuizzBee extends Component {
                 />
               )}
             </div>
-            <Foot/>
-          </Content>        
+            <Foot />
+          </Content>
         </Fade>
       </Layout>
     );
