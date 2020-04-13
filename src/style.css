@@ -31,4 +31,16 @@ button[disabled]{
     text-align: left!important;
 }
 
+.insp-logo-frame {
+  width: 200px;
+  text-align:center;
+  display: block;
+  margin-right:auto;
+  margin-left:auto;
+  margin-top:150px;
+  margin-bottom:auto;
+  
+}
+
+
 

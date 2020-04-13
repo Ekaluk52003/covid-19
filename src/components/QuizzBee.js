@@ -186,7 +186,7 @@ class QuizzBee extends Component {
                     แบบประเมินความเสี่ยงการติดต่อโรค Covid-19
                     โดยหน่วยงานความปลอดภัยอาชีวอนามัยและสิ่งแวดล้อม
                   </h2>
-
+                
                   <div className="header">
                     <img
                       src="/images/covid.svg"
@@ -197,7 +197,9 @@ class QuizzBee extends Component {
                         marginRight: "auto",
                       }}
                     />
+                    
                   </div>
+
 
                   <p>
                     หน่วยงานความปลอดภัยอาชีวอนามัยและสิ่งแวดล้อม
@@ -263,7 +265,7 @@ class QuizzBee extends Component {
                     )}
                 </div>
               ) : null}
-
+                      
               {this.state.start &&
                 this.state.response < 7 &&
                 (<a target="_blank" href="https://ddc.moph.go.th/viralpneumonia/index.php"
