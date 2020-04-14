@@ -1,13 +1,31 @@
 import React from 'react';
 import {BrowserRouter,Route, Switch } from 'react-router-dom'
-import QuizzBee from './components/QuizzBee'
-import Graph from './components/Graph'
+// import QuizzBee from './components/QuizzBee'
+// import Graph from './components/Graph'
 import Style from './style.css'
+import Loadable from 'react-loadable';
+
+
+function Loading() {
+  return <div className="Aligner"><h3>Loading...</h3></div>;
+}
+
+const QuizzBee = Loadable({
+  loader: () => import('./components/QuizzBee'),
+  loading: Loading,
+});
+
+const Graph = Loadable({
+  loader: () => import('./components/Graph'),
+  loading: Loading,
+});
+
+
 
 class App extends React.Component {
  // fake authentication Promise
  authenticate(){
-  return new Promise(resolve => setTimeout(resolve, 2000)) // 2 seconds
+  return new Promise(resolve => setTimeout(resolve, 1000)) // 2 seconds
 }
 
 componentDidMount(){
