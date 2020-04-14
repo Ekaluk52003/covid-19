@@ -37,7 +37,7 @@ componentDidMount(){
       setTimeout(() => {
         // remove from DOM
         ele.outerHTML = ''
-      }, 2000)
+      }, 1000)
     }
   })
 
